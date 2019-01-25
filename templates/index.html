@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <script language="JavaScript" type="text/javascript" src="/static/functions.js"></script>
+    <title>Uqer Code Generator</title>
+
+        <!-- CSS -->
+        <style>
+        .myForm {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.75em;
+            width: 25em;
+            padding: 4em;
+            border: 1px solid #ccc;
+        }
+
+        .myForm * {
+            box-sizing: border-box;
+        }
+
+        .myForm fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        .myForm legend,
+        .myForm label {
+            padding: 0;
+            font-weight: bold;
+        }
+
+        .myForm legend{
+            text-align: left;
+            display: block;
+        }
+
+        .myForm label {
+            text-align: left;
+            display: block;
+        }
+
+        .myForm input[type="datetime-local"]{
+            float: right;
+            width: 60%;
+            border: 1px solid #ccc;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.9em;
+            padding: 0.3em;
+        }
+
+        .myForm input[type="radio"]{
+            margin-left: 10%;
+        }
+        .myForm input[type="text"]{
+            float: right;
+            width: 100%;
+            border: 1px solid #ccc;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.9em;
+            padding: 0.3em;
+        }
+        .myForm input[type="reset"] {
+            padding: 1em;
+            border-radius: 0.5em;
+            background: #ccc;
+            border: none;
+            font-weight: bold;
+            width: auto;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 1.8em;
+        }
+        .myForm input[type="button"] {
+            padding: 1em;
+            border-radius: 0.5em;
+            background: #ccc;
+            border: none;
+            font-weight: bold;
+            width: auto;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 1.8em;
+        }
+
+        #code_gen:hover {
+            background: lawngreen;
+            cursor: pointer;
+        }
+        #reset:hover {
+            background:lightcoral;
+            cursor: pointer;
+        }
+        .copyright {
+            font-family: "Arial", "Helvetica", sans-serif;
+            font-size: 0.5em;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div style="background-color:lightblue" align="center">
+            <h1>Uqer Code Generator</h1>
+        </div>
+        
+        <div align="center">
+            <table style="width:80%; text-align:center">
+                <tr>
+                    <td>
+                        <div class="form" style="margin-left:60px">
+                            <form class="myForm">
+                                <p>
+                                <label>Start Date
+                                <input id="start" type="datetime-local" name="start_date" required min="2008-01-01" max="2019-01-01" method="select" step="86400">
+                                </label>
+                                </p>
+
+                                <p>
+                                <label>End Date
+                                <input id="end" type="datetime-local" name="End Date" required min="2008-01-01" max="2019-01-01"  method="select" step="86400">
+                                </label>
+                                </p>
+
+                                <p>
+                                    <table style="width:100%; text-align:center">
+                                    <tr>
+                                        <th>Symbol</th>
+                                        <th>Weight</th> 
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s1" type="text" name="symbol1" required></td>
+                                        <td><input id="w1" type="number" name="weight1" step="0.001" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s2" type="text" name="symbol2"></td>
+                                        <td><input id="w2" type="number" name="weight2" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s3" type="text" name="symbol3"></td>
+                                        <td><input id="w3" type="number" name="weight3" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s4" type="text" name="symbol4"></td>
+                                        <td><input id="w4" type="number" name="weight4" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s5" type="text" name="symbol5"></td>
+                                        <td><input id="w5" type="number" name="weight5" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s6" type="text" name="symbol6"></td>
+                                        <td><input id="w6" type="number" name="weight6" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s7" type="text" name="symbol7"></td>
+                                        <td><input id="w7" type="number" name="weight7" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s8" type="text" name="symbol8"></td>
+                                        <td><input id="w8" type="number" name="weight8" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s9" type="text" name="symbol9"></td>
+                                        <td><input id="w9" type="number" name="weight9" step="0.001"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="s10" type="text" name="symbol10"></td>
+                                        <td><input id="w10" type="number" name="weight10" step="0.001"></td>
+                                    </tr>
+                                    </table>
+                                </p>
+
+                                <fieldset>
+                                    <legend>Choose a strategy:</legend>
+                                    <p>
+                                        <label class="choice">
+                                        <input type="radio" name="strategy" required value="ma" checked="checked"> Moving Average
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label class="choice">
+                                        <input type="radio" name="strategy" required value="b"> Strategy B
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label class="choice">
+                                        <input type="radio" name="strategy" required value="c"> Strategy C
+                                        </label>
+                                    </p>
+                                </fieldset>
+
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="reset" id="reset" value="        Reset        ">
+                                        </td>
+                                        <td>
+                                            <input type="button" id="code_gen" onclick="generate()" value="Generate Code">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    <td>
+                        <textarea id="code" rows="50" cols="90" style="background:lightslategray; color: linen; margin-left:50px">Code here! </textarea>
+                    <td>
+                </tr>
+            </table>
+        </div>
+        <div align="center" class="copyright"><p>Copyright @ Hongzoeng Ng, kenecho@hku.hk</p></div> 
+    </body>
+</html>
