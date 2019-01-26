@@ -20,7 +20,7 @@ from flask import (
 )
 
 ADDRESS = "127.0.0.1"
-DEFAULT_PORT = 5000
+DEFAULT_PORT = 80
 
 
 parser = ArgumentParser()

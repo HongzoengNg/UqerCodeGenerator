@@ -10,7 +10,7 @@ Modified By: Hongzoeng Ng (kenecho@hku.hk>)
 Copyright @ 2018 KenEcho
 '''
 import json
-from src.ma_strategy_template import moving_average_code
+from .ma_strategy_template import moving_average_code
 
 
 class Template_Generator(object):
