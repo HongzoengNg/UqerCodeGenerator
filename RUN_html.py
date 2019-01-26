@@ -20,7 +20,7 @@ from flask import (
 )
 
 ADDRESS = "127.0.0.1"
-DEFAULT_PORT = 80
+DEFAULT_PORT = 5000
 
 
 parser = ArgumentParser()
@@ -73,7 +73,7 @@ def generate_code():
     return jsonify(response), 200
 
 
-@app.route("/")
+@app.route("/ucg")
 def display():
     return render_template("index.html")
 
