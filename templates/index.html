@@ -9,21 +9,22 @@
 
         <!-- CSS -->
         <style>
+        body{
+            background-image: url("https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+        }
+
         .myForm {
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             font-size: 0.75em;
-            width: 25em;
+            width: 30em;
             padding: 4em;
+            background-color: #ccc;
+            opacity:0.95;
             border: 1px solid #ccc;
         }
 
         .myForm * {
             box-sizing: border-box;
-        }
-
-        .myForm fieldset {
-            border: none;
-            padding: 0;
         }
 
         .myForm legend,
@@ -42,30 +43,47 @@
             display: block;
         }
 
-        .myForm input[type="datetime-local"]{
+        .myForm input[type="datetime-local"] {
             float: right;
-            width: 60%;
+            width: 50%;
             border: 1px solid #ccc;
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             font-size: 0.9em;
             padding: 0.3em;
         }
 
-        .myForm input[type="radio"]{
-            margin-left: 10%;
+        .myForm input[type="radio"] {
+            margin-left: 0%;
         }
+
+        .display-if-checked {
+            display: none;
+        }
+
+        .myForm input[type="radio"]:checked ~ .display-if-checked {
+            display: block;
+        }
+
         .myForm input[type="text"]{
             float: right;
             width: 100%;
             border: 1px solid #ccc;
             font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             font-size: 0.9em;
-            padding: 0.3em;
+            padding: 0.25em;
+        }
+        .myForm input[type="number"] {
+            float: right;
+            width: 100%;
+            border: 1px solid #ccc;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.9em;
+            padding: 0.25em;
         }
         .myForm input[type="reset"] {
             padding: 1em;
             border-radius: 0.5em;
-            background: #ccc;
+            background:slategray;
             border: none;
             font-weight: bold;
             width: auto;
@@ -76,7 +94,7 @@
         .myForm input[type="button"] {
             padding: 1em;
             border-radius: 0.5em;
-            background: #ccc;
+            background: slategray;
             border: none;
             font-weight: bold;
             width: auto;
@@ -85,8 +103,14 @@
             margin-top: 1.8em;
         }
 
+        #sma, #lma {
+            width: 30%;
+            border: 1px solid #ccc;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            font-size: 0.9em;
+        }
         #code_gen:hover {
-            background: lawngreen;
+            background:palegreen;
             cursor: pointer;
         }
         #reset:hover {
@@ -95,15 +119,16 @@
         }
         .copyright {
             font-family: "Arial", "Helvetica", sans-serif;
-            font-size: 0.5em;
+            font-size: 0.8em;
+            color: white;
         }
         </style>
     </head>
 
     <body>
-        <div style="background-color:lightblue" align="center">
-            <h1>Uqer Code Generator</h1>
-        </div>
+            <header style="background-color:lightskyblue; color:white" align="center">
+                <h1>Uqer Code Generator</h1>
+            </header>
         
         <div align="center">
             <table style="width:80%; text-align:center">
@@ -113,83 +138,160 @@
                             <form class="myForm">
                                 <p>
                                 <label>Start Date
-                                <input id="start" type="datetime-local" name="start_date" required min="2008-01-01" max="2019-01-01" method="select" step="86400">
+                                <input id="start" type="datetime-local" name="start_date" required method="select" step="86400">
                                 </label>
                                 </p>
-
                                 <p>
                                 <label>End Date
-                                <input id="end" type="datetime-local" name="End Date" required min="2008-01-01" max="2019-01-01"  method="select" step="86400">
+                                <input id="end" type="datetime-local" name="End Date" required method="select" step="86400">
                                 </label>
                                 </p>
 
                                 <p>
                                     <table style="width:100%; text-align:center">
                                     <tr>
+                                        <th></th>
                                         <th>Symbol</th>
                                         <th>Weight</th> 
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e1" name="exchange1">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s1" type="text" name="symbol1" required></td>
                                         <td><input id="w1" type="number" name="weight1" step="0.001" required></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e2" name="exchange2">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s2" type="text" name="symbol2"></td>
                                         <td><input id="w2" type="number" name="weight2" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e3" name="exchange3">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s3" type="text" name="symbol3"></td>
                                         <td><input id="w3" type="number" name="weight3" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e4" name="exchange4">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s4" type="text" name="symbol4"></td>
                                         <td><input id="w4" type="number" name="weight4" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e5" name="exchange5">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s5" type="text" name="symbol5"></td>
                                         <td><input id="w5" type="number" name="weight5" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e6" name="exchange6">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s6" type="text" name="symbol6"></td>
                                         <td><input id="w6" type="number" name="weight6" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e7" name="exchange7">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s7" type="text" name="symbol7"></td>
                                         <td><input id="w7" type="number" name="weight7" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e8" name="exchange8">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s8" type="text" name="symbol8"></td>
                                         <td><input id="w8" type="number" name="weight8" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e9" name="exchange9">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s9" type="text" name="symbol9"></td>
                                         <td><input id="w9" type="number" name="weight9" step="0.001"></td>
                                     </tr>
                                     <tr>
+                                        <td>
+                                            <select id="e10" name="exchange10">
+                                            <option value="" selected="selected">Exchange</option>
+                                            <option value=".XSHG" >SH</option>
+                                            <option value=".XSHE" >SZ</option>
+                                            </select>
+                                        </td>
                                         <td><input id="s10" type="text" name="symbol10"></td>
                                         <td><input id="w10" type="number" name="weight10" step="0.001"></td>
                                     </tr>
                                     </table>
                                 </p>
 
-                                <fieldset>
+                                <div style="border: none; padding: 0;">
                                     <legend>Choose a strategy:</legend>
-                                    <p>
-                                        <label class="choice">
-                                        <input type="radio" name="strategy" required value="ma" checked="checked"> Moving Average
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="strategy" required value="ma" checked="checked"> Moving Average
+                                            <table class="display-if-checked" style="text-align:center">
+                                                <tr>
+                                                    <td>Short Term MA <input type="number" id="sma" value="5" step="1"></td>
+                                                    <td>Long Term MA <input type="number" id="lma" value="20" step="1"></td>
+                                                </tr>
+                                            </table>
                                         </label>
-                                    </p>
-                                    <p>
-                                        <label class="choice">
-                                        <input type="radio" name="strategy" required value="b"> Strategy B
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="strategy" required value="b"> Strategy B
                                         </label>
-                                    </p>
-                                    <p>
-                                        <label class="choice">
-                                        <input type="radio" name="strategy" required value="c"> Strategy C
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="strategy" required value="c"> Strategy C
                                         </label>
-                                    </p>
-                                </fieldset>
+                                        
+                                    </div>
+                                </div>
 
                                 <table>
                                     <tr>
@@ -204,7 +306,7 @@
                             </form>
                         </div>
                     <td>
-                        <textarea id="code" rows="50" cols="90" style="background:lightslategray; color: linen; margin-left:50px">Code here! </textarea>
+                        <textarea id="code" rows="50" cols="90" style="background:azure; color:black; margin-left:50px; opacity:0.95;">Code here! </textarea>
                     <td>
                 </tr>
             </table>

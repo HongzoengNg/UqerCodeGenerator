@@ -16,9 +16,15 @@ from flask import (
     Flask,
     jsonify,
     request,
+    redirect,
+    url_for,
+    abort,
     render_template
 )
-
+from utils.validation import (
+    validate_date,
+    validate_portfolio
+)
 ADDRESS = "127.0.0.1"
 DEFAULT_PORT = 5000
 
@@ -41,36 +47,34 @@ def generate_code():
     params.pop('start')
     end_date = params['end'][:-6]
     params.pop('end')
-    params.pop("")
-    key_with_empty = []
     strategy = params["strategy"]
     params.pop("strategy")
     for key in params:
-        if params[key] == "":
-            key_with_empty.append(key)
-        else:
-            params[key] = float(params[key])
-    for key in key_with_empty:
-        params.pop(key)
-    args = {
-        "start": start_date,
-        "end": end_date,
-        "str_portfolio": json.dumps(params)
-    }
-    code = ""
-    if args['start'] == "":
-        code += "Error: The start date cannot be empty!\n"
-    if args['end'] == "":
-        code += "Error: The end date cannot be empty!\n"
-    if args['str_portfolio'] == "{}":
-        code += "Error: At least 1 symbol should be input!\n"
-    if args['start'] != "" and args['end'] != "" and args['str_portfolio'] != "":
+        params[key] = float(params[key])
+    valid_port_msg, valid_port_boolen = validate_portfolio(params)
+    valid_date_msg, valid_date_boolen = validate_date(start_date, end_date)
+    str_portfolio = json.dumps(params)
+    if valid_port_boolen and valid_date_boolen and str_portfolio != "{}":
+        args = {
+            "start": start_date,
+            "end": end_date,
+            "str_portfolio": str_portfolio
+        }
         tg = Template_Generator()
         code = tg.generate(strategy, args)
+    else:
+        code = valid_date_msg + valid_port_msg
+        if str_portfolio == "{}":
+            code += "At least 1 symbol should be input\n"
     response = {
         'code': code
     }
     return jsonify(response), 200
+
+
+@app.route("/")
+def index():
+    return redirect(url_for("display"))
 
 
 @app.route("/ucg")
@@ -78,7 +82,7 @@ def display():
     return render_template("index.html")
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     args = parser.parse_args()
     port = args.port
     app.run(host=ADDRESS, port=port)

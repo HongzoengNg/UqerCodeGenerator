@@ -5,12 +5,21 @@ function generate(){
     for(i = 1; i <= 10; i++){
         var key = document.getElementById("s" + String(i)).value;
         var val = document.getElementById("w" + String(i)).value;
-        params[key] = val;
+        var e = document.getElementById("e" + String(i));
+        var exchange = e.options[e.selectedIndex].value;
+        if(key != "" && val != "" && exchange != ""){
+            params[key + exchange] = val;
+        }
     }
     var strategy = document.querySelector('input[name="strategy"]:checked').value;
     params["start"] = start_date;
     params["end"] = end_date;
     params["strategy"] = strategy;
+    if(strategy == "ma"){
+        var sma = document.getElementById("sma").value;
+        var lma = document.getElementById("lma").value;
+        params["strategy"] += "_" + sma + "_" + lma;
+    }
     var params_json = JSON.stringify(params);
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(){

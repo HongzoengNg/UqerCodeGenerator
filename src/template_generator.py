@@ -10,7 +10,8 @@ Modified By: Hongzoeng Ng (kenecho@hku.hk>)
 Copyright @ 2018 KenEcho
 '''
 import json
-from .ma_strategy_template import moving_average_code
+from src.ma_strategy_template import moving_average_code
+from utils.validation import validate_sma_lma
 
 
 class Template_Generator(object):
@@ -39,10 +40,18 @@ class Template_Generator(object):
     def generate(self, strategy, args):
         """
         :params:
-        strategy: str, "ma", ...
+        strategy: str, "ma_5_10", ...
         """
-        if strategy == "ma":
-            return self._ma_code_fill_in(**args)
+        if strategy.startswith("ma"):
+            sma = int(strategy.split("_")[1])
+            lma = int(strategy.split("_")[2])
+            msg, valid = validate_sma_lma(sma, lma)
+            if valid:
+                args["short_ma"] = str(sma)
+                args["long_ma"] = str(lma)
+                return self._ma_code_fill_in(**args)
+            else:
+                return msg
         elif strategy == "b":
             return "Strategy B is unavailable yet."
         elif strategy == "c":
