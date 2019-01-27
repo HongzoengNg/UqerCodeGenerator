@@ -82,6 +82,11 @@ def display():
     return render_template("index.html")
 
 
+@app.route("/ucg/help")
+def help():
+    return render_template("help.html")
+
+
 if __name__ == "__main__": 
     args = parser.parse_args()
     port = args.port

@@ -4,13 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script language="JavaScript" type="text/javascript" src="/static/functions.js"></script>
     <title>Uqer Code Generator</title>
 
         <!-- CSS -->
         <style>
         body{
-            background-image: url("https://images.pexels.com/photos/917494/pexels-photo-917494.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+            background-image: url("/static/images/back.jpg");
+            background-size:cover;
         }
 
         .myForm {
@@ -135,7 +137,7 @@
                 <tr>
                     <td>
                         <div class="form" style="margin-left:60px">
-                            <form class="myForm">
+                            <form class="myForm" id="myForm">
                                 <p>
                                 <label>Start Date
                                 <input id="start" type="datetime-local" name="start_date" required method="select" step="86400">
@@ -151,7 +153,11 @@
                                     <table style="width:100%; text-align:center">
                                     <tr>
                                         <th></th>
-                                        <th>Symbol</th>
+                                        <th>
+                                            <a href="http://quote.eastmoney.com/stock_list.html" target="_blank">
+                                                Symbol <i class="fa fa-question-circle"></i>
+                                            </a>
+                                        </th>
                                         <th>Weight</th> 
                                     </tr>
                                     <tr>
@@ -303,10 +309,15 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <div style="height: 5em" align="left">
+                                    <p><label>FAQ</label></p>
+                                    <p><text>1. <a href="https://uqer.io/" target="_blank">What is Uqer?</a></text></p>
+                                    <p><text>2. <a href="/ucg/help" target="_blank">How to use the codes?</a></text></p>
+                                </div>
                             </form>
                         </div>
                     <td>
-                        <textarea id="code" rows="50" cols="90" style="background:azure; color:black; margin-left:50px; opacity:0.95;">Code here! </textarea>
+                        <textarea id="code" rows="50" cols="90" style="background:azure; color:black; margin-left:50px; opacity:0.95;">Codes will be showed here!&#13;&#10;&#13;&#10;Hint:&#13;&#10;1. Date should be between 2010-01-01 and 2019-02-01;&#13;&#10;2. Please look up symbols by click 'Symbol?';&#13;&#10;3. You should select an exchange for each of your symbols;&#13;&#10;4. At least 1 symbol should be input.&#13;&#10;&#13;&#10;Please enjoy!&#13;&#10;Should have any problems with this webpage, please contact kenecho@hku.hk.</textarea>
                     <td>
                 </tr>
             </table>
