@@ -86,30 +86,30 @@ def validate_sma_lma(sma, lma):
     if sma != "":
         if sma < 1:
             ma_correct = False
-            msg += "Short Term MA should not be less than 1\n"
+            msg += "Short-Term value should not be less than 1\n"
         if sma > 100:
             ma_correct = False
-            msg += "Short Term MA should not be greater than 100\n"
+            msg += "Short-Term value should not be greater than 100\n"
     else:
         ma_correct = False
-        msg += "Error: The short MA cannot be empty!\n"
+        msg += "Error: The Short-Term value cannot be empty!\n"
     if lma != "":
         if lma < 1:
             ma_correct = False
-            msg += "Long Term MA should not be less than 1\n"
+            msg += "Long-Term value should not be less than 1\n"
         if lma > 100:
             ma_correct = False
-            msg += "Long Term MA should not be greater than 100\n"
+            msg += "Long-Term value should not be greater than 100\n"
     else:
         ma_correct = False
-        msg += "Error: The Long MA cannot be empty!\n"
+        msg += "Error: The Long-Term value cannot be empty!\n"
     if sma == "" or lma == "":
         return msg, ma_correct
     else:
         if sma > lma:
             ma_correct = False
-            msg += "The short MA cannot be greater than the long MA\n"
+            msg += "The Short-Term value cannot be greater than the Long-Term value\n"
         elif sma == lma:
             ma_correct = False
-            msg += "The short MA cannot be equal to the long MA\n"
+            msg += "The Short-Term value cannot be equal to the Long-Term value\n"
         return msg, ma_correct

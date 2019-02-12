@@ -15,10 +15,22 @@ function generate(){
     params["start"] = start_date;
     params["end"] = end_date;
     params["strategy"] = strategy;
-    if(strategy == "ma"){
+    if (strategy == "ma"){
         var sma = document.getElementById("sma").value;
         var lma = document.getElementById("lma").value;
         params["strategy"] += "_" + sma + "_" + lma;
+    }
+    else if (strategy == "macd"){
+        var sema = document.getElementById("sema").value;
+        var lema = document.getElementById("lema").value;
+        var macd = document.getElementById("macdline").value;
+        params["strategy"] += "_" + sema + "_" + lema + "_" + macd;
+    }
+    else if (strategy == "stoch"){
+        var fastk = document.getElementById("fastk").value;
+        var slowk = document.getElementById("slowk").value;
+        var slowd = document.getElementById("slowd").value;
+        params["strategy"] += "_" + fastk + "_" + slowk + "_" + slowd;
     }
     var params_json = JSON.stringify(params);
     var xhttp = new XMLHttpRequest();

@@ -288,14 +288,32 @@
                                     </div>
                                     <div>
                                         <label>
-                                            <input type="radio" name="strategy" required value="b"> Strategy B
+                                            <input type="radio" name="strategy" required value="macd"> MACD
+                                            <table class="display-if-checked" style="text-align:center">
+                                                <tr>
+                                                    <td>Short Term EMA <input type="number" id="sema" value="12" step="1"></td>
+                                                    <td>Long Term EMA <input type="number" id="lema" value="26" step="1"></td>
+                                                    <td>MACD Line <input type="number" id="macdline" value="9" step="1"></td>
+                                                </tr>
+                                            </table>
                                         </label>
                                     </div>
                                     <div>
                                         <label>
-                                            <input type="radio" name="strategy" required value="c"> Strategy C
+                                            <input type="radio" name="strategy" required value="stoch"> Stochastic Oscillator
+                                            <table class="display-if-checked" style="text-align:center">
+                                                <tr>
+                                                    <td>N-Period <input type="number" id="fastk" value="14" step="1"></td>
+                                                    <td>K-Period <input type="number" id="slowk" value="3" step="1"></td>
+                                                    <td>D-Period <input type="number" id="slowd" value="3" step="1"></td>
+                                                </tr>
+                                            </table>
                                         </label>
-                                        
+                                    </div>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="strategy" required value="buyhold"> Buy & Hold
+                                        </label>
                                     </div>
                                 </div>
 
