@@ -43,9 +43,9 @@ app = Flask(__name__)
 @app.route('/generate', methods=['POST'])
 def generate_code():
     params = request.get_json()
-    start_date = params['start'][:-6]
+    start_date = params['start'].split("T")[0]
     params.pop('start')
-    end_date = params['end'][:-6]
+    end_date = params['end'].split("T")[0]
     params.pop('end')
     strategy = params["strategy"]
     params.pop("strategy")
