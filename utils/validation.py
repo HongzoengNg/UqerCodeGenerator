@@ -44,6 +44,8 @@ def validate_portfolio(portfolio):
 def validate_date(start_date, end_date):
     date_correct = True
     msg = ""
+    start_date = start_date.split("T")[0]
+    end_date = end_date.split("T")[0]
     min_date = datetime.datetime.strptime("2010-01-01", "%Y-%m-%d")
     max_date = datetime.datetime.strptime("2019-02-01", "%Y-%m-%d")
     if start_date != "":
